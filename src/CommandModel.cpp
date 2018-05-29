@@ -10,3 +10,8 @@ void CommandModel::execute()
 {
 	this->redo();
 }
+
+bool CommandModel::addToStack()
+{
+	return true;
+}

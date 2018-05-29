@@ -14,8 +14,8 @@ public:
 
 	virtual bool isReady();
 	virtual void execute();
+	virtual bool addToStack();
 
-	virtual bool addToStack() = 0;
 	virtual void undo() = 0;
 	virtual void redo() = 0;
 
