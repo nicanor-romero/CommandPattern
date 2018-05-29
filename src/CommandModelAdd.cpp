@@ -38,3 +38,17 @@ void CommandModelAdd::execute()
 
 	emit done();
 }
+
+
+bool CommandModelAdd::addToStack()
+{
+	return true;
+}
+
+void CommandModelAdd::undo()
+{
+}
+
+void CommandModelAdd::redo()
+{
+}

@@ -28,6 +28,10 @@ public:
 	bool isReady() override;
 	void execute() override;
 
+	bool addToStack() override;
+	void undo() override;
+	void redo() override;
+
 private:
 	void transformCoordinates();
 

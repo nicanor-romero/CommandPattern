@@ -46,3 +46,16 @@ void CommandModelTranslate::execute()
 	m_translateParams.model->translateToPosition(m_translateParams.targetPositionX, m_translateParams.targetPositionY);
 }
 
+
+bool CommandModelTranslate::addToStack()
+{
+	return true;
+}
+
+void CommandModelTranslate::undo()
+{
+}
+
+void CommandModelTranslate::redo()
+{
+}
