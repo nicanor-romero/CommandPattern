@@ -59,6 +59,7 @@ set (SOURCES
 	CanvasHandler.cpp
     CommandModel.cpp
     CommandModelAdd.cpp
+	CommandModelDelete.cpp
     CommandModelTranslate.cpp
     Model.cpp
 	ProcessingEngine.cpp
