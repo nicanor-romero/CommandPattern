@@ -63,6 +63,16 @@ void QVTKFramebufferObjectRenderer::setProcessingEngine(std::shared_ptr<Processi
 	m_processingEngine = std::shared_ptr<ProcessingEngine>(processingEngine);
 }
 
+void QVTKFramebufferObjectRenderer::undo()
+{
+
+}
+
+void QVTKFramebufferObjectRenderer::redo()
+{
+
+}
+
 
 void QVTKFramebufferObjectRenderer::synchronize(QQuickFramebufferObject *item)
 {

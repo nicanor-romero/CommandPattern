@@ -56,6 +56,9 @@ public:
 
 	void setProcessingEngine(std::shared_ptr<ProcessingEngine> processingEngine);
 
+	void undo();
+	void redo();
+
 signals:
 	void isModelSelectedChanged();
 

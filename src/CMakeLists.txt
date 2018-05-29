@@ -60,7 +60,9 @@ set (SOURCES
     CommandModel.cpp
     CommandModelAdd.cpp
 	CommandModelDelete.cpp
-    CommandModelTranslate.cpp
+	CommandModelRedo.cpp
+	CommandModelTranslate.cpp
+	CommandModelUndo.cpp
     Model.cpp
 	ProcessingEngine.cpp
     QVTKFramebufferObjectItem.cpp
