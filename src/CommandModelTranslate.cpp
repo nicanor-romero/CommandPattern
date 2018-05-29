@@ -47,11 +47,6 @@ void CommandModelTranslate::execute()
 }
 
 
-bool CommandModelTranslate::addToStack()
-{
-	return true;
-}
-
 void CommandModelTranslate::undo()
 {
 }

@@ -40,11 +40,6 @@ void CommandModelAdd::execute()
 }
 
 
-bool CommandModelAdd::addToStack()
-{
-	return true;
-}
-
 void CommandModelAdd::undo()
 {
 }

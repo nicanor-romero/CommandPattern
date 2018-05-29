@@ -12,11 +12,6 @@ CommandModelDelete::CommandModelDelete(QVTKFramebufferObjectRenderer *vtkFboRend
 }
 
 
-bool CommandModelDelete::addToStack()
-{
-	return true;
-}
-
 void CommandModelDelete::undo()
 {
 }

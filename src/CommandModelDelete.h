@@ -17,7 +17,6 @@ class CommandModelDelete : public CommandModel
 public:
 	CommandModelDelete(QVTKFramebufferObjectRenderer *vtkFboRenderer, std::shared_ptr<ProcessingEngine> processingEngine, std::shared_ptr<Model> model);
 
-	bool addToStack() override;
 	void undo() override;
 	void redo() override;
 
