@@ -91,6 +91,13 @@ void CanvasHandler::openModel(QUrl path)
 	m_vtkFboItem->addModelFromFile(path);
 }
 
+void CanvasHandler::deleteSelectedModel()
+{
+	qDebug() << "CanvasHandler::deleteSelectedModel()";
+
+	m_vtkFboItem->deleteSelectedModel();
+}
+
 bool CanvasHandler::isModelExtensionValid(QUrl modelPath)
 {
 	if (modelPath.toString().toLower().endsWith(".stl") || modelPath.toString().toLower().endsWith(".obj"))

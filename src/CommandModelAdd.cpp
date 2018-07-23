@@ -30,20 +30,14 @@ bool CommandModelAdd::isReady()
 	return m_ready;
 }
 
-void CommandModelAdd::execute()
-{
-	qDebug() << "CommandModelAdd::execute()";
-
-	m_vtkFboRenderer->addModelActor(m_model);
-
-	emit done();
-}
-
-
 void CommandModelAdd::undo()
 {
+	m_vtkFboRenderer->deleteModel(m_model);
 }
 
 void CommandModelAdd::redo()
 {
+	m_vtkFboRenderer->addModelActor(m_model);
+
+	emit done();
 }

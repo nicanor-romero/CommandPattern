@@ -1,5 +1,6 @@
 #include "CommandModel.h"
 #include "CommandModelAdd.h"
+#include "CommandModelDelete.h"
 #include "Model.h"
 #include "ProcessingEngine.h"
 #include "QVTKFramebufferObjectItem.h"
@@ -110,6 +111,16 @@ void QVTKFramebufferObjectItem::translateModel(CommandModelTranslate::TranslateP
 	}
 
 	this->addCommand(new CommandModelTranslate(m_vtkFboRenderer, translateData, inTransition));
+}
+
+void QVTKFramebufferObjectItem::deleteSelectedModel()
+{
+	std::shared_ptr<Model> model = m_vtkFboRenderer->getSelectedModel();
+
+	if (model)
+	{
+		this->addCommand(new CommandModelDelete(m_vtkFboRenderer, m_processingEngine, model));
+	}
 }
 
 

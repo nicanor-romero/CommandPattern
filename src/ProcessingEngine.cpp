@@ -57,6 +57,10 @@ std::shared_ptr<Model> ProcessingEngine::addModel(QUrl modelFilePath)
 	return m_models[m_models.size() - 1];
 }
 
+void ProcessingEngine::deleteModel(std::shared_ptr<Model> model)
+{
+}
+
 
 vtkSmartPointer<vtkPolyData> ProcessingEngine::preprocessPolydata(vtkSmartPointer<vtkPolyData> inputData)
 {

@@ -23,6 +23,7 @@ public:
 	CanvasHandler(int argc, char **argv);
 
 	Q_INVOKABLE void openModel(QUrl path);
+	Q_INVOKABLE void deleteSelectedModel();
 
 	Q_INVOKABLE void mousePressEvent(int button, int mouseX, int mouseY);
 	Q_INVOKABLE void mouseMoveEvent(int button, int mouseX, int mouseY);

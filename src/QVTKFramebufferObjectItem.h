@@ -38,6 +38,7 @@ public:
 	void addModelFromFile(QUrl modelPath);
 
 	void translateModel(CommandModelTranslate::TranslateParams_t &translateData, bool inTransition);
+	void deleteSelectedModel();
 
 	std::queue<CommandModel*> commandsQueue;
 	std::mutex commandsQueueMutex;

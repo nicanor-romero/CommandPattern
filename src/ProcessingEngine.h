@@ -21,6 +21,7 @@ class ProcessingEngine
 		ProcessingEngine();
 
 		std::shared_ptr<Model> addModel(QUrl modelFilePath);
+		void deleteModel(std::shared_ptr<Model> model);
 
 		void placeModel(std::shared_ptr<Model> model);
 
