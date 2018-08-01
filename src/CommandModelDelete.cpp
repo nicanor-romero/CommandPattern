@@ -14,9 +14,11 @@ CommandModelDelete::CommandModelDelete(QVTKFramebufferObjectRenderer *vtkFboRend
 
 void CommandModelDelete::undo()
 {
+	m_vtkFboRenderer->addModelActor(m_model);
 }
 
 void CommandModelDelete::redo()
 {
+	m_vtkFboRenderer->deleteModelActor(m_model);
 }
 

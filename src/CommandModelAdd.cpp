@@ -32,7 +32,7 @@ bool CommandModelAdd::isReady()
 
 void CommandModelAdd::undo()
 {
-	m_vtkFboRenderer->deleteModel(m_model);
+	m_vtkFboRenderer->deleteModelActor(m_model);
 }
 
 void CommandModelAdd::redo()
