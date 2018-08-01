@@ -54,6 +54,8 @@ QVTKFramebufferObjectRenderer::QVTKFramebufferObjectRenderer()
 	m_moveEvent = new QMouseEvent(QEvent::None, QPointF(0,0), Qt::NoButton, Qt::NoButton, Qt::NoModifier);
 	m_wheelEvent = new QWheelEvent(QPointF(0,0), 0, Qt::NoButton, Qt::NoModifier, Qt::Vertical);
 
+	m_undoStack = std::unique_ptr<QUndoStack>(new QUndoStack(this));
+
 	update();
 }
 
@@ -220,7 +222,14 @@ void QVTKFramebufferObjectRenderer::render()
 
 		m_vtkFboItem->commandsQueueMutex.unlock();
 
-		command->execute();
+		if (command->addToStack())
+		{
+			m_undoStack->push(command);
+		}
+		else
+		{
+			command->execute();
+		}
 	}
 
 	// Reset the view-up vector. This improves the interaction of the camera with the plate.

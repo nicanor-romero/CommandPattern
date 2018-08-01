@@ -84,6 +84,8 @@ private:
 	vtkSmartPointer<vtkRenderer> m_renderer;
 	vtkSmartPointer<vtkGenericRenderWindowInteractor> m_vtkRenderWindowInteractor;
 
+	std::unique_ptr<QUndoStack> m_undoStack;
+
 	vtkSmartPointer<vtkCellPicker> m_picker;
 
 	std::shared_ptr<Model> m_selectedModel = nullptr;
