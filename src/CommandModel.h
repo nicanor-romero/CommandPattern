@@ -16,9 +16,6 @@ public:
 	virtual void execute();
 	virtual bool addToStack();
 
-	virtual void undo() = 0;
-	virtual void redo() = 0;
-
 protected:
 	QVTKFramebufferObjectRenderer *m_vtkFboRenderer;
 };
