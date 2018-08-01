@@ -40,6 +40,9 @@ public:
 	Q_INVOKABLE void setModelColorG(int colorG);
 	Q_INVOKABLE void setModelColorB(int colorB);
 
+	Q_INVOKABLE void undo();
+	Q_INVOKABLE void redo();
+
 public slots:
 	void startApplication();
 

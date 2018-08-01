@@ -226,3 +226,13 @@ void CanvasHandler::setModelColorB(int colorB)
 {
 	m_vtkFboItem->setModelColorB(colorB);
 }
+
+void CanvasHandler::undo()
+{
+	m_vtkFboItem->undo();
+}
+
+void CanvasHandler::redo()
+{
+	m_vtkFboItem->redo();
+}

@@ -67,12 +67,26 @@ void QVTKFramebufferObjectRenderer::setProcessingEngine(std::shared_ptr<Processi
 
 void QVTKFramebufferObjectRenderer::undo()
 {
-
+	if (m_undoStack->canUndo())
+	{
+		m_undoStack->undo();
+	}
+	else
+	{
+		qDebug() << "QVTKFramebufferObjectRenderer::undo(): No undo available";
+	}
 }
 
 void QVTKFramebufferObjectRenderer::redo()
 {
-
+	if (m_undoStack->canRedo())
+	{
+		m_undoStack->redo();
+	}
+	else
+	{
+		qDebug() << "QVTKFramebufferObjectRenderer::undo(): No redo available";
+	}
 }
 
 

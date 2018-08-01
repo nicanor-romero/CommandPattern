@@ -1,6 +1,8 @@
 #include "CommandModel.h"
 #include "CommandModelAdd.h"
 #include "CommandModelDelete.h"
+#include "CommandModelRedo.h"
+#include "CommandModelUndo.h"
 #include "Model.h"
 #include "ProcessingEngine.h"
 #include "QVTKFramebufferObjectItem.h"
@@ -121,6 +123,16 @@ void QVTKFramebufferObjectItem::deleteSelectedModel()
 	{
 		this->addCommand(new CommandModelDelete(m_vtkFboRenderer, m_processingEngine, model));
 	}
+}
+
+void QVTKFramebufferObjectItem::undo()
+{
+	this->addCommand(new CommandModelUndo(m_vtkFboRenderer));
+}
+
+void QVTKFramebufferObjectItem::redo()
+{
+	this->addCommand(new CommandModelRedo(m_vtkFboRenderer));
 }
 
 

@@ -40,6 +40,9 @@ public:
 	void translateModel(CommandModelTranslate::TranslateParams_t &translateData, bool inTransition);
 	void deleteSelectedModel();
 
+	void undo();
+	void redo();
+
 	std::queue<CommandModel*> commandsQueue;
 	std::mutex commandsQueueMutex;
 
