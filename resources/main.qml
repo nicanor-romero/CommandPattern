@@ -172,4 +172,19 @@ ApplicationWindow {
             canvasHandler.showFileDialog = false;
         }
     }
+
+    Shortcut {
+        sequence: StandardKey.Delete
+        onActivated: canvasHandler.deleteSelectedModel()
+    }
+
+    Shortcut {
+        sequence: "Ctrl+z"
+        onActivated: canvasHandler.undo()
+    }
+
+    Shortcut {
+        sequence: "Ctrl+Shift+z"
+        onActivated: canvasHandler.redo()
+    }
 }
