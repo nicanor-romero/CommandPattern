@@ -40,7 +40,7 @@ public:
 	QOpenGLFramebufferObject *createFramebufferObject(const QSize &size);
 
 	void addModelActor(std::shared_ptr<Model> model);
-	void deleteModel(std::shared_ptr<Model> model);
+	void deleteModelActor(std::shared_ptr<Model> model);
 
 	std::mutex selectedModelMutex;
 	std::shared_ptr<Model> getSelectedModel();

@@ -433,13 +433,11 @@ void QVTKFramebufferObjectRenderer::addModelActor(std::shared_ptr<Model> model)
 	qDebug() << "QVTKFramebufferObjectRenderer::addModelActor(): Model added " << model.get();
 }
 
-void QVTKFramebufferObjectRenderer::deleteModel(std::shared_ptr<Model> model)
+void QVTKFramebufferObjectRenderer::deleteModelActor(std::shared_ptr<Model> model)
 {
-	qDebug() << "QVTKFramebufferObjectRenderer::deleteModel():" << model;
+	qDebug() << "QVTKFramebufferObjectRenderer::deleteModelActor()";
 
 	m_renderer->RemoveActor(model->getModelActor());
-
-	// TODO: Delete model from m_models vector
 }
 
 
