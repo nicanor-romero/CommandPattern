@@ -19,6 +19,9 @@ class CanvasHandler : public QObject
 	Q_PROPERTY(double modelPositionX READ getSelectedModelPositionX NOTIFY selectedModelPositionXChanged)
 	Q_PROPERTY(double modelPositionY READ getSelectedModelPositionY NOTIFY selectedModelPositionYChanged)
 
+	Q_PROPERTY(bool canUndo READ getCanUndo NOTIFY canUndoChanged)
+	Q_PROPERTY(bool canRedo READ getCanRedo NOTIFY canRedoChanged)
+
 public:
 	CanvasHandler(int argc, char **argv);
 
@@ -43,6 +46,9 @@ public:
 	Q_INVOKABLE void undo();
 	Q_INVOKABLE void redo();
 
+	bool getCanUndo();
+	bool getCanRedo();
+
 public slots:
 	void startApplication();
 
@@ -52,6 +58,9 @@ signals:
 	void isModelSelectedChanged();
 	void selectedModelPositionXChanged();
 	void selectedModelPositionYChanged();
+
+	void canUndoChanged();
+	void canRedoChanged();
 
 private:
 	void closeApplication();

@@ -52,6 +52,9 @@ CanvasHandler::CanvasHandler(int argc, char **argv)
 		connect(m_vtkFboItem, &QVTKFramebufferObjectItem::isModelSelectedChanged, this, &CanvasHandler::isModelSelectedChanged);
 		connect(m_vtkFboItem, &QVTKFramebufferObjectItem::selectedModelPositionXChanged, this, &CanvasHandler::selectedModelPositionXChanged);
 		connect(m_vtkFboItem, &QVTKFramebufferObjectItem::selectedModelPositionYChanged, this, &CanvasHandler::selectedModelPositionYChanged);
+
+		connect(m_vtkFboItem, &QVTKFramebufferObjectItem::canUndoChanged, this, &CanvasHandler::canUndoChanged);
+		connect(m_vtkFboItem, &QVTKFramebufferObjectItem::canRedoChanged, this, &CanvasHandler::canRedoChanged);
 	}
 	else
 	{
@@ -235,4 +238,24 @@ void CanvasHandler::undo()
 void CanvasHandler::redo()
 {
 	m_vtkFboItem->redo();
+}
+
+bool CanvasHandler::getCanUndo()
+{
+	// QVTKFramebufferObjectItem might not be initialized when QML loads
+	if (!m_vtkFboItem)
+	{
+		return 0;
+	}
+	return m_vtkFboItem->getCanUndo();
+}
+
+bool CanvasHandler::getCanRedo()
+{
+	// QVTKFramebufferObjectItem might not be initialized when QML loads
+	if (!m_vtkFboItem)
+	{
+		return 0;
+	}
+	return m_vtkFboItem->getCanRedo();
 }
