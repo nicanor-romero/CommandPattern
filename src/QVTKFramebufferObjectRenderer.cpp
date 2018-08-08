@@ -70,6 +70,7 @@ void QVTKFramebufferObjectRenderer::undo()
 	if (m_undoStack->canUndo())
 	{
 		m_undoStack->undo();
+		qDebug() << "QVTKFramebufferObjectRenderer::undo(): Stack index:" << m_undoStack->index();
 	}
 	else
 	{
@@ -82,6 +83,7 @@ void QVTKFramebufferObjectRenderer::redo()
 	if (m_undoStack->canRedo())
 	{
 		m_undoStack->redo();
+		qDebug() << "QVTKFramebufferObjectRenderer::redo(): Stack index:" << m_undoStack->index();
 	}
 	else
 	{
@@ -239,6 +241,7 @@ void QVTKFramebufferObjectRenderer::render()
 		if (command->addToStack())
 		{
 			m_undoStack->push(command);
+			qDebug() << "QVTKFramebufferObjectRenderer::render(): Pushing command. Stack index:" << m_undoStack->index();
 		}
 		else
 		{

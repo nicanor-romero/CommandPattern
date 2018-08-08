@@ -31,6 +31,8 @@ public:
 	void undo() override;
 	void redo() override;
 
+	bool addToStack() override;
+
 private:
 	void transformCoordinates();
 

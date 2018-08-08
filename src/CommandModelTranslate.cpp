@@ -49,8 +49,15 @@ void CommandModelTranslate::execute()
 
 void CommandModelTranslate::undo()
 {
+	m_translateParams.model->translateToPosition(m_translateParams.previousPositionX, m_translateParams.previousPositionY);
 }
 
 void CommandModelTranslate::redo()
 {
+	this->execute();
+}
+
+bool CommandModelTranslate::addToStack()
+{
+	return !m_inTransition;
 }
