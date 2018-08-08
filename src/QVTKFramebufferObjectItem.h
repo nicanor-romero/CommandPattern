@@ -73,6 +73,9 @@ public:
 	void setModelColorG(int colorG);
 	void setModelColorB(int colorB);
 
+	bool getCanUndo();
+	bool getCanRedo();
+
 signals:
 	void rendererInitialized();
 
@@ -82,6 +85,9 @@ signals:
 
 	void addModelFromFileDone();
 	void addModelFromFileError(QString error);
+
+	void canUndoChanged();
+	void canRedoChanged();
 
 private:
 	void addCommand(CommandModel* command);

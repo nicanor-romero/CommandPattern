@@ -37,6 +37,9 @@ void QVTKFramebufferObjectItem::setVtkFboRenderer(QVTKFramebufferObjectRenderer*
 	connect(m_vtkFboRenderer, &QVTKFramebufferObjectRenderer::selectedModelPositionXChanged, this, &QVTKFramebufferObjectItem::selectedModelPositionXChanged);
 	connect(m_vtkFboRenderer, &QVTKFramebufferObjectRenderer::selectedModelPositionYChanged, this, &QVTKFramebufferObjectItem::selectedModelPositionYChanged);
 
+	connect(m_vtkFboRenderer, &QVTKFramebufferObjectRenderer::canUndoChanged, this, &QVTKFramebufferObjectItem::canUndoChanged);
+	connect(m_vtkFboRenderer, &QVTKFramebufferObjectRenderer::canRedoChanged, this, &QVTKFramebufferObjectItem::canRedoChanged);
+
 	m_vtkFboRenderer->setProcessingEngine(m_processingEngine);
 }
 
@@ -296,5 +299,15 @@ void QVTKFramebufferObjectItem::setModelColorB(int colorB)
 		m_modelColorB = colorB;
 		update();
 	}
+}
+
+bool QVTKFramebufferObjectItem::getCanUndo()
+{
+	return m_vtkFboRenderer->getCanUndo();
+}
+
+bool QVTKFramebufferObjectItem::getCanRedo()
+{
+	return m_vtkFboRenderer->getCanRedo();
 }
 

@@ -91,6 +91,16 @@ void QVTKFramebufferObjectRenderer::redo()
 	}
 }
 
+bool QVTKFramebufferObjectRenderer::getCanUndo()
+{
+	return m_canUndo;
+}
+
+bool QVTKFramebufferObjectRenderer::getCanRedo()
+{
+	return m_canRedo;
+}
+
 
 void QVTKFramebufferObjectRenderer::synchronize(QQuickFramebufferObject *item)
 {
@@ -248,6 +258,9 @@ void QVTKFramebufferObjectRenderer::render()
 			command->execute();
 		}
 	}
+
+	this->setCanUndo(m_undoStack->canUndo());
+	this->setCanRedo(m_undoStack->canRedo());
 
 	// Reset the view-up vector. This improves the interaction of the camera with the plate.
 	m_renderer->GetActiveCamera()->SetViewUp(0.0, 0.0, 1.0);
@@ -570,6 +583,24 @@ std::shared_ptr<Model> QVTKFramebufferObjectRenderer::getSelectedModelNoLock()
 		}
 	}
 	return nullptr;
+}
+
+void QVTKFramebufferObjectRenderer::setCanUndo(bool canUndo)
+{
+	if (m_canUndo != canUndo)
+	{
+		m_canUndo = canUndo;
+		emit canUndoChanged();
+	}
+}
+
+void QVTKFramebufferObjectRenderer::setCanRedo(bool canRedo)
+{
+	if (m_canRedo != canRedo)
+	{
+		m_canRedo = canRedo;
+		emit canRedoChanged();
+	}
 }
 
 bool QVTKFramebufferObjectRenderer::screenToWorld(int16_t screenX, int16_t screenY, double worldPos[])

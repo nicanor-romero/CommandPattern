@@ -60,11 +60,17 @@ public:
 	void undo();
 	void redo();
 
+	bool getCanUndo();
+	bool getCanRedo();
+
 signals:
 	void isModelSelectedChanged();
 
 	void selectedModelPositionXChanged();
 	void selectedModelPositionYChanged();
+
+	void canUndoChanged();
+	void canRedoChanged();
 
 private:
 	void initScene();
@@ -77,6 +83,9 @@ private:
 
 	void createLine(double x1, double y1, double z1, double x2, double y2, double z2, vtkSmartPointer<vtkPoints> points, vtkSmartPointer<vtkCellArray> cells);
 	std::shared_ptr<Model> getSelectedModelNoLock();
+
+	void setCanUndo(bool canUndo);
+	void setCanRedo(bool canRedo);
 
 	std::shared_ptr<ProcessingEngine> m_processingEngine;
 	QVTKFramebufferObjectItem *m_vtkFboItem = nullptr;
@@ -123,6 +132,9 @@ private:
 	int m_modelsRepresentationOption = 0;
 	double m_modelsOpacity = 1.0;
 	bool m_gouraudInterpolation = false;
+
+	bool m_canUndo = false;
+	bool m_canRedo = false;
 };
 
 #endif // QVTKFRAMEBUFFEROBJECTRENDERER_H
