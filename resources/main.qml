@@ -55,6 +55,40 @@ ApplicationWindow {
             ToolTip.text: "Open a 3D model into the canvas"
         }
 
+        RoundButton {
+            id: canUndoIcon
+            visible: canvasHandler.canUndo
+            text: "Undo"
+            height: width
+            radius: width / 2
+            anchors.right: openFileButton.left
+            anchors.bottom: parent.bottom
+            anchors.margins: 50
+
+            Material.background: Material.Amber
+
+            onClicked: {
+                canvasHandler.undo();
+            }
+        }
+
+        RoundButton {
+            id: canRedoIcon
+            visible: canvasHandler.canRedo
+            text: "Redo"
+            height: width
+            radius: width / 2
+            anchors.right: canUndoIcon.left
+            anchors.bottom: parent.bottom
+            anchors.margins: 50
+
+            Material.background: Material.Amber
+
+            onClicked: {
+                canvasHandler.redo();
+            }
+        }
+
         ComboBox {
             id: representationCombobox
             visible: canvasHandler.isModelSelected
