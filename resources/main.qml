@@ -62,14 +62,103 @@ ApplicationWindow {
             height: width
             radius: width / 2
             anchors.right: openFileButton.left
-            anchors.bottom: parent.bottom
-            anchors.margins: 50
+            anchors.verticalCenter: openFileButton.verticalCenter
+            anchors.rightMargin: 50
 
             Material.background: Material.Amber
 
             onClicked: {
                 canvasHandler.undo();
             }
+
+            states: [
+                State {
+                    name: "visible"
+                    when: canvasHandler.canUndo
+
+                    PropertyChanges {
+                        target: canUndoIcon
+                        opacity: 1.0
+                    }
+
+                    PropertyChanges {
+                        target: canUndoIcon
+                        visible: true
+                    }
+                },
+                State {
+                    name: "invisible"
+                    when: !canvasHandler.canUndo
+
+                    PropertyChanges {
+                        target: canUndoIcon
+                        opacity: 0.0
+                    }
+
+                    PropertyChanges {
+                        target: canUndoIcon
+                        visible: false
+                    }
+                }
+            ]
+
+            transitions: [
+                Transition {
+                    from: "invisible"
+                    to: "visible"
+
+                    SequentialAnimation {
+
+                        NumberAnimation {
+                            target: canUndoIcon
+                            properties: "visible"
+                        }
+
+                        ParallelAnimation {
+                            PropertyAnimation {
+                                target: canUndoIcon
+                                properties: "scale"
+                                easing.overshoot: 0.5
+                                easing.type: Easing.OutElastic
+                                from: 0
+                                to: 1
+                                duration: 300
+                            }
+
+                            OpacityAnimator {
+                                target: canUndoIcon
+                                duration: 250
+                            }
+                        }
+                    }
+                },
+                Transition {
+                    from: "visible"
+                    to: "invisible"
+
+                    PropertyAnimation {
+                        target: canUndoIcon
+                        properties: "scale"
+                        easing.type: Easing.InBack
+                        from: 1
+                        to: 0
+                        duration: 150
+                    }
+
+                    SequentialAnimation {
+
+                        OpacityAnimator {
+                            target: canUndoIcon
+                            duration: 150
+                        }
+
+                        NumberAnimation {
+                            target: canUndoIcon
+                            properties: "visible"
+                        }
+                    }
+                }
+            ]
         }
 
         RoundButton {
@@ -79,14 +168,103 @@ ApplicationWindow {
             height: width
             radius: width / 2
             anchors.right: canUndoIcon.left
-            anchors.bottom: parent.bottom
-            anchors.margins: 50
+            anchors.verticalCenter: openFileButton.verticalCenter
+            anchors.rightMargin: 30
 
             Material.background: Material.Amber
 
             onClicked: {
                 canvasHandler.redo();
             }
+
+            states: [
+                State {
+                    name: "visible"
+                    when: canvasHandler.canRedo
+
+                    PropertyChanges {
+                        target: canRedoIcon
+                        opacity: 1.0
+                    }
+
+                    PropertyChanges {
+                        target: canRedoIcon
+                        visible: true
+                    }
+                },
+                State {
+                    name: "invisible"
+                    when: !canvasHandler.canRedo
+
+                    PropertyChanges {
+                        target: canRedoIcon
+                        opacity: 0.0
+                    }
+
+                    PropertyChanges {
+                        target: canRedoIcon
+                        visible: false
+                    }
+                }
+            ]
+
+            transitions: [
+                Transition {
+                    from: "invisible"
+                    to: "visible"
+
+                    SequentialAnimation {
+
+                        NumberAnimation {
+                            target: canRedoIcon
+                            properties: "visible"
+                        }
+
+                        ParallelAnimation {
+                            PropertyAnimation {
+                                target: canRedoIcon
+                                properties: "scale"
+                                easing.overshoot: 0.5
+                                easing.type: Easing.OutElastic
+                                from: 0
+                                to: 1
+                                duration: 300
+                            }
+
+                            OpacityAnimator {
+                                target: canRedoIcon
+                                duration: 250
+                            }
+                        }
+                    }
+                },
+                Transition {
+                    from: "visible"
+                    to: "invisible"
+
+                    PropertyAnimation {
+                        target: canRedoIcon
+                        properties: "scale"
+                        easing.type: Easing.InBack
+                        from: 1
+                        to: 0
+                        duration: 150
+                    }
+
+                    SequentialAnimation {
+
+                        OpacityAnimator {
+                            target: canRedoIcon
+                            duration: 150
+                        }
+
+                        NumberAnimation {
+                            target: canRedoIcon
+                            properties: "visible"
+                        }
+                    }
+                }
+            ]
         }
 
         ComboBox {
